@@ -1,0 +1,10 @@
+goose-tui
+Copyright 2026 The goose-tui authors
+
+This product is an independent project. It is not part of the Goose
+distribution, and it is not affiliated with or endorsed by the authors of
+Goose or of any other project named "goose".
+
+goose-tui is written in Goose and imports only its standard library
+(https://github.com/aardappel/goose), which is licensed under the Apache
+License, Version 2.0. See that repository for its copyright notices.

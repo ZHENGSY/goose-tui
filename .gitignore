@@ -1,0 +1,8 @@
+examples/*
+!examples/*.goose
+!examples/_harness.goose
+tests/*.c
+__pycache__/
+*.pyc
+.DS_Store
+.goose/

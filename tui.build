@@ -1,0 +1,6 @@
+// The one platform file. Everything above it is Goose.
+c_sources = ["src/term.c"];
+
+// Examples and tests are their own root files: they are not part of the
+// package's own Goose, and the compiler must not try to compile them into it.
+exclude = ["examples", "tests"];
