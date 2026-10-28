@@ -14,6 +14,14 @@ target.
 
 ![goose-tui: examples/05_todo, captured from a real pty](docs/demo.gif)
 
+Each [release](https://github.com/ZHENGSY/goose-tui/releases) also carries the
+two demo programs as self-contained binaries (macOS arm64, Linux x64), for
+looking before installing anything:
+
+```sh
+tar -xzf goose-tui-demo-*-macos-arm64.tar.gz && ./todo
+```
+
 ## Requirements
 
 - [Goose](https://github.com/aardappel/goose/releases) v2026.3 or later on

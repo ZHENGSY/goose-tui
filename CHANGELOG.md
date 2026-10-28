@@ -8,6 +8,13 @@ Before 1.0 the minor version may break the API; a patch release does not.
 
 ## [Unreleased]
 
+### Added
+
+- A release workflow: a `v*` tag builds the demo programs with
+  `goose build --standalone` on macOS and Linux, smoke-tests them, and attaches
+  the archives and their SHA-256 sums to the GitHub release. Release notes come
+  from this file.
+
 ## [0.1.0] - 2026-10-28
 
 First release. The API is expected to move before 1.0.

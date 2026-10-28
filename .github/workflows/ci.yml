@@ -26,26 +26,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Goose
-        env:
-          ASSET: ${{ matrix.asset }}
-        run: |
-          set -eu
-          url="https://github.com/aardappel/goose/releases/download/v2026.3/$ASSET"
-          curl -fsSL -o "$RUNNER_TEMP/goose.tar.gz" "$url"
-          mkdir -p "$RUNNER_TEMP/goose"
-          tar -xzf "$RUNNER_TEMP/goose.tar.gz" -C "$RUNNER_TEMP/goose"
-          # The macOS release asks for this after a browser download; harmless
-          # otherwise, and cheap insurance against a quarantined archive.
-          if [ "$(uname)" = Darwin ]; then
-            xattr -dr com.apple.quarantine "$RUNNER_TEMP/goose" || true
-          fi
-          # The archive layout has changed before; find the binary instead of
-          # assuming a directory name. The standard library sits beside it.
-          bin=$(find "$RUNNER_TEMP/goose" -maxdepth 3 -type f -name goose | head -1)
-          test -n "$bin"
-          chmod +x "$bin"
-          dirname "$bin" >> "$GITHUB_PATH"
+      - uses: ./.github/actions/install-goose
+        with:
+          asset: ${{ matrix.asset }}
 
       - name: Toolchain
         run: goose toolchain

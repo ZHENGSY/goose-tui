@@ -1,0 +1,40 @@
+name: Install Goose
+description: >
+  Download and unpack a pinned Goose release, then put it on PATH. Shared by
+  ci.yml and release.yml so the version is stated in one place per workflow.
+
+inputs:
+  version:
+    description: Release tag of the Goose language to install.
+    required: false
+    default: v2026.3
+  asset:
+    description: The release asset to download for this runner.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Download and unpack
+      shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+        ASSET: ${{ inputs.asset }}
+      run: |
+        set -eu
+        url="https://github.com/aardappel/goose/releases/download/$VERSION/$ASSET"
+        curl -fsSL -o "$RUNNER_TEMP/goose.tar.gz" "$url"
+        mkdir -p "$RUNNER_TEMP/goose"
+        tar -xzf "$RUNNER_TEMP/goose.tar.gz" -C "$RUNNER_TEMP/goose"
+        # A browser download is quarantined on macOS and the release says to
+        # strip this before the first run; curl output usually is not.
+        if [ "$(uname)" = Darwin ]; then
+          xattr -dr com.apple.quarantine "$RUNNER_TEMP/goose" || true
+        fi
+        # The archive layout has changed before: find the binary instead of
+        # assuming a directory name. The standard library sits beside it.
+        bin=$(find "$RUNNER_TEMP/goose" -maxdepth 3 -type f -name goose | head -1)
+        test -n "$bin"
+        chmod +x "$bin"
+        dirname "$bin" >> "$GITHUB_PATH"
+        "$bin" version
