@@ -111,6 +111,7 @@ jobs:
 
       - name: Release notes from CHANGELOG.md
         env:
+          GH_TOKEN: ${{ github.token }}
           TAG: ${{ inputs.tag || github.ref_name }}
         run: |
           set -eu
@@ -164,5 +165,3 @@ jobs:
           fi
           gh release upload "$TAG" dist/*.tar.gz dist/*.sha256 --clobber
           gh release view "$TAG" --json url,assets --jq '.url, (.assets[].name)'
-        env:
-          GH_TOKEN: ${{ github.token }}
