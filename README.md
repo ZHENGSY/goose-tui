@@ -1,5 +1,7 @@
 # goose-tui
 
+[![ci](https://github.com/ZHENGSY/goose-tui/actions/workflows/ci.yml/badge.svg)](https://github.com/ZHENGSY/goose-tui/actions/workflows/ci.yml)
+
 A terminal UI framework written in [Goose](https://github.com/aardappel/goose) —
 the memory-safe systems language with no heap, no GC and no lifetime
 annotations. (The Goose *language*: Block's goose AI agent is an unrelated
