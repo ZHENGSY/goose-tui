@@ -20,7 +20,7 @@ Every snippet here is valid Goose and compiles against this package.
 
 ```goose
 import std;
-import tui from "you/goose-tui@v0.1.0";   // or a checkout: "../goose-tui"
+import tui from "ZHENGSY/goose-tui@v0.1.0";   // or a checkout: "../goose-tui"
 
 fn main() {
     var t = tui::term();          // the terminal: size, raw mode, one read per frame

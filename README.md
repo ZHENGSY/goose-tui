@@ -29,7 +29,7 @@ target.
 
 ```goose
 import std;
-import tui from "you/goose-tui@v0.1.0";   // or a checkout: "../goose-tui"
+import tui from "ZHENGSY/goose-tui@v0.1.0";   // or a checkout: "../goose-tui"
 
 fn main() {
     var t = tui::term();
@@ -117,7 +117,7 @@ sh tests/run.sh --quick  # skip the example builds and the pty
 The package is used by path or by a pinned git ref; there is no registry step:
 
 ```goose
-import tui from "you/goose-tui@v0.1.0";   // a tag, a commit or a branch
+import tui from "ZHENGSY/goose-tui@v0.1.0";   // a tag, a commit or a branch
 import tui from "../goose-tui";           // a checkout, used in place
 ```
 
